@@ -25,3 +25,11 @@ for c1 in consonent:
 						print c1 + v1 + c2 + v2 + c3 + v3
 
 
+# Loop through possibilities starting with vowels
+for v1 in vowel:
+	for c1 in consonent:
+		for v2 in vowel:
+			for c2 in consonent:
+				for v3 in vowel:
+					for c3 in consonent:
+						print v1 + c1 + v2 + c2 + v3 + c3
