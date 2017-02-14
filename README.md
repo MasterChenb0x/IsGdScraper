@@ -10,6 +10,10 @@ In order, run:
 
 ### CHANGELOG
 
+#### 2017-02-13
+Removing proxy_scraper.php since URLs are resolved with HTTPS. Using proxy_scraper.php was cuasing false negatives in the URL resolution.
+Code refactored by Kelso
+
 #### 2017-02-01.2
 Commented major tasks in each script.
 Old scripts are left in for document's sake.
