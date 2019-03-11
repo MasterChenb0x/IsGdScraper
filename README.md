@@ -10,6 +10,9 @@ In order, run:
 
 ### CHANGELOG
 
+#### 2019-03-11
+Revisiting code base. Link generation was redone to give choice to the way links are generated ( all caps, all lower case, numbers only, etc).New link generation is still a work in progress. Uploading current code to repository for saved work.
+
 #### 2017-02-13
 Removing proxy_scraper.php since URLs are resolved with HTTPS. Using proxy_scraper.php was cuasing false negatives in the URL resolution.
 Code refactored by Kelso
