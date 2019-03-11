@@ -5,10 +5,15 @@ import sys
 import itertools
 
 def slug_generate(chartype):
+	"""
+		Take a list of character types as an argument. 
+		Generate link slugs based on type.
+	"""
 	for a, b, c, d, e, f in itertools.product(chartype, chartype, chartype, chartype, chartype, chartype):
 		print(a + b + c + d + e + f)
 	
 choice = 0
+
 # Constants
 numbers = ['0','1','2','3','4','5','6','7','8','9']
 consonents = ['b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','w','x','y','z']
@@ -19,6 +24,8 @@ caps = Cons + Vows
 lowernums = consonents + vowels + numbers
 wordpronounce = consonents + vowels
 complete = numbers + consonents + vowels + Cons + Vows
+
+
 print("is.gd generates a 6 character slug when shortening URLs.")
 print("1. complete list (very long and not recommended)")
 print("2. lowercase list (includes numbers in the generation)")
