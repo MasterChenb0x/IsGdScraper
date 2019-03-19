@@ -3,19 +3,28 @@
 # Import the Universe
 import sys
 import itertools
+import time
 
 def slug_generate(chartype):
 	"""
 		Take a list of character types as an argument. 
 		Generate link slugs based on type.
 	"""
-	for a, b, c, d, e, f in itertools.product(chartype, chartype, chartype, chartype, chartype, chartype):
-		print(a + b + c + d + e + f)
-	pass
+	print("Generating links....")
+	time.sleep(2)
+	with open('testlinks.txt', 'a+') as fh: 
+		for a, b, c, d, e, f in itertools.product(chartype, chartype, chartype, chartype, chartype, chartype):
+			link = a + b + c + d + e + f
+			print(link)
+			fh.write(link + '\n')
+	fh.close()
 
 choice = ""
 
 def print_menu():
+	"""
+		Prints menu options and exits
+	"""
 	print(30 * '-')
 	print("Is.Gd Slug Generator")
 	print(30 * '-')
@@ -25,7 +34,6 @@ def print_menu():
 	print("[3]: word pronouncable (ie ababab) DEFAULT")
 	print("[4]: numbers only (very unlikely to be productive)")
 	print("[5]: all caps (very unlikely to be productive)")
-	pass
 
 # Constants
 numbers = ['0','1','2','3','4','5','6','7','8','9']

@@ -4,11 +4,12 @@
 This project scrapes is.gd links for a project on security analysis. It is not the author's intention to use information gained with this project in a malicous manner. Insights into findings will be released upon the final presentation.
 
 ### USAGE
-In order, run:
-1. link-generate.py. This will generate a text file of approximately 2.3 million parameters. You can split this file to divide the workload among multiple computers. Your choice.
-2. isgd.py. this will initiate the proxy scrape and start resolving links. The input file is hardset, so you would need to change it depending on how you split the generated links.
+For now, run link-generate.py first, and then isgd.py. My plan is to merge all interactive functionality into one main program with background functionality modularized into their own library.
 
 ### CHANGELOG
+
+#### 2019-03-19
+Very much a work in progress at the moment. Most of the code written in the past week has been for testing purposes only and will be removed for a public release. We can now make proxied requests for hopefully faster scraping and avoiding rate limits. Actual production scraping still needs to be coded.
 
 #### 2019-03-11
 Revisiting code base. Link generation was redone to give choice to the way links are generated ( all caps, all lower case, numbers only, etc).New link generation is still a work in progress. Uploading current code to repository for saved work.

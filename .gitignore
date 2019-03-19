@@ -1,2 +1,4 @@
 *.txt
 *.bak
+vote.py
+*.gz
