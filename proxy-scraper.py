@@ -6,33 +6,28 @@ import random
 
 # Functionas
 def get_proxies():
-	proxyDomain = 'https://free-proxy-list.net/'
+	"""
+	Grab a list of proxies from which to scrape.
+	"""
+	proxyDomain = ['https://sslproxies.org',
+		'https://free-proxy-list.net']
 	proxies = []
 
-	r = requests.get(proxyDomain)
+	for site in proxyDomain:
+		r = requests.get(site)
 
-	soup = BeautifulSoup(r.content, 'html.parser')
-
-	table = soup.find('table',{'id' : 'proxylisttable'})
-	for row in table.find_all('tr'):
-		columns = row.find_all('td')
-		try:
-			proxies.append("%s:%s" % (columns[0].get_text(),columns[1].get_text()))
-		except:
-			pass
-
+		soup = BeautifulSoup(r.content, 'html.parser')
+	
+		table = soup.find('table',{'id' : 'proxylisttable'})
+		for row in table.find_all('tr'):
+			columns = row.find_all('td')
+			try:
+				proxies.append("%s:%s" % (columns[0].get_text(),columns[1].get_text()))
+			except:
+				pass
 	return proxies
 
-'''
-with open("proxylist.txt", "a+") as f:
-	for row in table.find_all('tr'):
-		columns = row.find_all('td')
-		try:
-			f.write("%s:%s\n" % (columns[0].get_text(),columns[1].get_text()))
-		except:
-			pass
-f.close()
-'''
+
 
 # Constants
 user_agent_list = [
@@ -65,7 +60,17 @@ user_agent_list = [
 
 url = "https://chenb0x.net/asterisk-the-busy-box"
 
+
 proxylist = get_proxies()
+
+'''
+for proxy in proxylist:
+	print(proxy)
+
+#print(proxylist)
+
+'''
+
 for proxy in proxylist:
 	user_agent = random.choice(user_agent_list)
 	headers = {"User-Agent": user_agent}
@@ -76,3 +81,4 @@ for proxy in proxylist:
 		print(e)
 
 #print(proxies)
+
