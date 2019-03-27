@@ -1,5 +1,6 @@
 *.txt
 *.bak
+*.back
 vote.py
 *.gz
 *.sh

@@ -28,7 +28,8 @@ def get_proxies():
 				pass
 	return proxies
 
-
+#def resolve_link(slug):
+	
 
 # Constants
 user_agent_list = [
@@ -59,55 +60,33 @@ user_agent_list = [
     'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)'
 ]
 
-#url = "https://chenb0x.net/asterisk-the-busy-box"
-
 proxylist = get_proxies()
 """
-for proxy in proxylist[:]:
-	print(proxy)
-	proxylist.remove(proxy)
-	print("{0} proxies left".format(len(proxylist)))
-
-
-for proxy in proxylist:
-	print(proxy)
-	user_agent = random.choice(user_agent_list)
-	headers = {"User-Agent": user_agent}
-	try:
-		print("Scraping: " + url)
-		r = requests.head(url, allow_redirects=True, timeout=3, proxies={"http": proxy, "https": proxy}, headers=headers)
-	except:
-		pass
-
-#print(proxies)
 #for proxy in proxylist[:]:
-
+"""
 urls = 0
-
-"""
-with open("links-generated.txt", "r") as f:
+with open("links-test.txt", "r") as f:
+	lines = f.readlines()
+	random.shuffle(lines) # randomize so we don't scrape sequentially
 	with open("valid.txt", "w") as v:
-		try:
-			proxy = proxylist[random.randint(0,len(proxylist)-1)]
-			proxylist.remove(proxy)
-			for i in range(1,3600):
-		except ValueError:
-			# Ran out of proxies! Get more.
-			proxylist = get_proxies()
-
-"""
+		for line in lines:
 			try:
-				for line in f:
-					urls += 1
-					if len(line) != 7: continue
-					try:
-						url = "https://is.gd/" + line[:-1]
-						r = requests.head(url, allow_redirects=True, timeout=1)
-						if "is.gd" not in r.url:
-							v.write("{1} resolved to: {0}\n".format(r.url, url))
-					except Exception as e:
-						continue
-
-	except KeyboardInterrupt:
-		print "\nTested {0} URLs.".format(urls)
-"""
+				proxy = proxylist[random.randint(0,len(proxylist)-1)]
+				proxylist.remove(proxy)
+				print(proxy)
+				user_agent = random.choice(user_agent_list)
+				headers = {"User-Agent": user_agent}
+				urls += 1
+				if len(line) != 7: continue
+				try:
+					url = "https://is.gd/" + line[:-1]
+					print(url)
+					r = requests.head(url, allow_redirects=True, timeout=1, proxies={"http": proxy, "https": proxy}, headers=headers)
+					if "is.gd" not in r.url:
+						print("{1} resolved to: {0}\n".format(r.url, url))
+				except Exception as e:
+					print(e)
+					continue
+			except ValueError:
+				print("We need more proxies, Cap'n!")
+				proxylist = get_proxies()

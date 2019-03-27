@@ -4,9 +4,20 @@
 This project scrapes is.gd links for a project on security analysis. It is not the author's intention to use information gained with this project in a malicous manner. Insights into findings will be released upon the final presentation.
 
 ### USAGE
-For now, run link-generate.py first, and then isgd.py. My plan is to merge all interactive functionality into one main program with background functionality modularized into their own library.
+For now, run link-generate.py first, and then shortscraper.py. My plan is to merge all interactive functionality into one main program with background functionality modularized into their own library.
 
 ### CHANGELOG
+
+#### 2019-03-26
+Still a work in progress, but here are the changes!
+
+1. Verified links are being requested through proxy.
+2. Randomized the links so that scraping is not sequential.
+
+##### To Do
+1. If a proxy doesn't work, grab next proxy without skipping link.
+2. Write valid links to a file.
+3. Exception handling for ProxyError.
 
 #### 2019-03-19
 Very much a work in progress at the moment. Most of the code written in the past week has been for testing purposes only and will be removed for a public release. We can now make proxied requests for hopefully faster scraping and avoiding rate limits. Actual production scraping still needs to be coded.
