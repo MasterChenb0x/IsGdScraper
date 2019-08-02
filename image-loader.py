@@ -16,6 +16,6 @@ for p in pics:
         driver.get(p)
         time.sleep(3)
     except:
-        print("Moving on...")
+        print("Moving on...") # Skip images that have trouble resolving
 
 #print(pics)
