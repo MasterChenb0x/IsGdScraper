@@ -21,16 +21,25 @@ while selection == "":
     selection = input()
 
     if selection == '1':
-        print(nums + upper_vow + upper_cons + lower_vow + lower_cons)
+        charset = nums + upper_vow + upper_cons + lower_vow + lower_cons
+        with open("linkslugs.txt", "w") as slugs:
+            for ch1, ch2, ch3, ch4, ch5, ch6 in itertools.product(charset, charset, charset, charset, charset, charset):
+                slugs.write(ch1 + ch2 + ch3 + ch4 + ch5 + ch6)
+                slugs.write("\n")
     elif selection == '2':
         charset = lower_cons + lower_vow + nums
-        for ch1, ch2, ch3, ch4, ch5, ch6 in itertools.product(charset, charset, charset, charset, charset, charset):
-            print(ch1 + ch2 + ch3 + ch4 + ch5 +ch6)
+        with open("linkslugs.txt", "w") as slugs:
+            for ch1, ch2, ch3, ch4, ch5, ch6 in itertools.product(charset, charset, charset, charset, charset, charset):
+                slugs.write(ch1 + ch2 + ch3 + ch4 + ch5 + ch6)
+                slugs.write("\n")
     elif selection == '3':
-        for c1, v1, c2, v2, c3, v3 in itertools.product(lower_cons, lower_vow, lower_cons, lower_vow, lower_cons, lower_vow):
-            print(c1 + v1 + c2 + v2 + c3 + v3)
-        for v1, c1, c2, v2, c3, v3 in itertools.product(lower_vow, lower_cons, lower_vow, lower_cons, lower_vow, lower_cons):
-            print(v1 + c1 + v2 + c2 + v3 + c3)
+        with open("linkslugs.txt", "w") as slugs:
+            for c1, v1, c2, v2, c3, v3 in itertools.product(lower_cons, lower_vow, lower_cons, lower_vow, lower_cons, lower_vow):
+                slugs.write(c1 + v1 + c2 + v2 + c3 + v3)
+                slugs.write("\n")
+            for v1, c1, c2, v2, c3, v3 in itertools.product(lower_vow, lower_cons, lower_vow, lower_cons, lower_vow, lower_cons):
+                slugs.write(v1 + c1 + v2 + c2 + v3 + c3)
+                slugs.write("\n")
     else:
         selection = ""
 
