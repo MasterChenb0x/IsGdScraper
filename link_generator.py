@@ -37,7 +37,7 @@ while selection == "":
             for c1, v1, c2, v2, c3, v3 in itertools.product(lower_cons, lower_vow, lower_cons, lower_vow, lower_cons, lower_vow):
                 slugs.write(c1 + v1 + c2 + v2 + c3 + v3)
                 slugs.write("\n")
-            for v1, c1, c2, v2, c3, v3 in itertools.product(lower_vow, lower_cons, lower_vow, lower_cons, lower_vow, lower_cons):
+            for v1, c1, v2, c2, v3, c3 in itertools.product(lower_vow, lower_cons, lower_vow, lower_cons, lower_vow, lower_cons):
                 slugs.write(v1 + c1 + v2 + c2 + v3 + c3)
                 slugs.write("\n")
     else:
